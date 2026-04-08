@@ -621,6 +621,67 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
+    /* ARTICLES */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .article-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .article-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .article-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border-radius: 6px;
+      padding: 3px 10px;
+      width: fit-content;
+    }
+    .article-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .article-desc {
+      font-size: 0.88rem;
+      color: var(--text-2);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-3);
+      margin-top: 4px;
+    }
+    .article-read-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--accent);
+      transition: gap 0.2s;
+    }
+    .article-read-link:hover { gap: 10px; }
+
     @media (max-width: 1024px) {
       .hero-grid { grid-template-columns: 1fr; gap: 48px; }
       .hero-image-wrap { order: -1; }
@@ -654,6 +715,7 @@
       <a href="#education">Education</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a href="#articles">Articles</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="nav-actions">
@@ -677,6 +739,7 @@
   <a href="#education">Education</a>
   <a href="#skills">Skills</a>
   <a href="#projects">Projects</a>
+  <a href="#articles">Articles</a>
   <a href="#contact">Contact</a>
   <a href="/cv/kalana-cv.pdf" download class="btn-cv">
     <i class="ph ph-download-simple"></i> Download CV
@@ -1175,6 +1238,52 @@
           <div class="project-links">
             <a href="#" class="project-link"><i class="ph ph-github-logo"></i> GitHub</a>
           </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section id="articles" class="section">
+  <div class="container">
+    <span class="section-label reveal">Writing</span>
+    <h2 class="section-title reveal">My <span>Articles</span></h2>
+    <p class="section-desc reveal">Thoughts and insights on Data Science, AI, and the technology landscape.</p>
+
+    <div class="articles-grid">
+
+      <div class="article-card reveal">
+        <img src="img/article-boredom.png" alt="Is Boredom the New Fuel for Success?" style="width:100%;height:180px;object-fit:cover;border-radius:10px;" />
+        <span class="article-tag">Technology &amp; Society</span>
+        <div class="article-title">Is Boredom the New Fuel for Success? Or Have Short Videos Engineered It Out of Our Lives?</div>
+        <p class="article-desc">We built machines to support us, then to ease our lives — now they entertain us endlessly. Boredom, once a source of creativity and deep reflection, is vanishing as algorithmic feeds train us to be reactive rather than thoughtful. This piece explores technology's responsibility toward human wellbeing.</p>
+        <div class="article-meta">
+          <span><i class="ph ph-calendar-blank"></i> April 7, 2025 · 3 min read</span>
+          <a href="https://www.linkedin.com/pulse/boredom-new-fuel-success-have-short-videos-engineered-geethmal-zmbhc/" target="_blank" class="article-read-link">Read <i class="ph ph-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="article-card reveal">
+        <img src="img/article-dms.png" alt="From Grantharudha to Digital" style="width:100%;height:180px;object-fit:cover;border-radius:10px;" />
+        <span class="article-tag">Digital Transformation</span>
+        <div class="article-title">From Grantharudha to Digital: Why Document Scanning with Smart DMS is Vital for the Public Sector</div>
+        <p class="article-desc">Just as Sri Lankan Buddhist monks preserved the Tripitaka by committing it to writing, today's public sector faces its own defining moment — transitioning from paper-based systems to smart digital management. This article makes the case for document scanning and DMS as the critical first step toward modernising government service delivery.</p>
+        <div class="article-meta">
+          <span><i class="ph ph-calendar-blank"></i> Sep 24, 2025 · 5 min read</span>
+          <a href="https://www.linkedin.com/pulse/from-grantharudha-digital-why-document-scanning-smart-geethmal-hrw8c/" target="_blank" class="article-read-link">Read <i class="ph ph-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="article-card reveal">
+        <img src="img/article-deegadanthu.png" alt="When Majestic Falls Meet Human Faults" style="width:100%;height:180px;object-fit:cover;border-radius:10px;" />
+        <span class="article-tag">Data Science &amp; Conservation</span>
+        <div class="article-title">When Majestic Falls Meet Human Faults: The Tragic Story of Deegadanthu</div>
+        <p class="article-desc">Deegadanthu, a revered tusker deep in Sri Lanka's ancient forests, died in December 2023 after encountering an illegal electric fence near Kalawewa National Park. His story is a wake-up call — and an argument for using GPS collars, drone monitoring, and data analysis to prevent human-wildlife conflict before it turns fatal.</p>
+        <div class="article-meta">
+          <span><i class="ph ph-calendar-blank"></i> Jan 4, 2025 · 4 min read</span>
+          <a href="https://www.linkedin.com/pulse/when-majestic-falls-meet-human-faults-tragic-story-kalana-geethmal-iyfgc/" target="_blank" class="article-read-link">Read <i class="ph ph-arrow-right"></i></a>
         </div>
       </div>
 
