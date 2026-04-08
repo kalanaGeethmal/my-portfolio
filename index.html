@@ -1452,21 +1452,35 @@
 
   const formSubmit = document.getElementById('form-submit');
   const formSuccess = document.getElementById('form-success');
-  formSubmit.addEventListener('click', () => {
-    const name = document.getElementById('cf-name').value.trim();
-    const email = document.getElementById('cf-email').value.trim();
+  formSubmit.addEventListener('click', async () => {
+    const name    = document.getElementById('cf-name').value.trim();
+    const email   = document.getElementById('cf-email').value.trim();
+    const subject = document.getElementById('cf-subject').value.trim();
     const message = document.getElementById('cf-message').value.trim();
     if (!name || !email || !message) {
-      formSubmit.style.background = '#ff4d4d';
-      setTimeout(() => { formSubmit.style.background = ''; }, 1000);
+      formSubmit.style.outline = '2px solid #e53e3e';
+      setTimeout(() => { formSubmit.style.outline = ''; }, 1200);
       return;
     }
     formSubmit.disabled = true;
     formSubmit.innerHTML = '<i class="ph ph-circle-notch" style="animation:spin 0.8s linear infinite;"></i> Sending...';
-    setTimeout(() => {
-      formSubmit.style.display = 'none';
-      formSuccess.style.display = 'block';
-    }, 1400);
+    try {
+      const res = await fetch('https://formspree.io/f/xojpbwrp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message })
+      });
+      if (res.ok) {
+        formSubmit.style.display = 'none';
+        formSuccess.style.display = 'block';
+      } else {
+        formSubmit.disabled = false;
+        formSubmit.innerHTML = '<i class="ph ph-paper-plane-tilt"></i> Try Again';
+      }
+    } catch {
+      formSubmit.disabled = false;
+      formSubmit.innerHTML = '<i class="ph ph-paper-plane-tilt"></i> Try Again';
+    }
   });
 
   const style = document.createElement('style');
